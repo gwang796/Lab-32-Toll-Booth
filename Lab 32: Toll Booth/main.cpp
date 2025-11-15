@@ -11,7 +11,7 @@
 const int INIT = 2;
 
 int main(int argc, const char * argv[]) {
-    deque<Car*> parking;
+    deque<Car> parking;
     for (int i = 0; i < INIT; i++){
         parking.push_back(new Car);
     }
