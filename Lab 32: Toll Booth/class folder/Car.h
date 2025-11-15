@@ -12,6 +12,7 @@ using namespace std;
 const int YEAR_MIN = 1990, YEAR_MAX = 2024;
 const int XP_MIN = 1000, XP_MAX = 9999;
 const int NR_MANUFACTURERS = 25;
+
 class Car {
 private:
     string make;
