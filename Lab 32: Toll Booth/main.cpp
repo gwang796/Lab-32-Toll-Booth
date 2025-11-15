@@ -39,9 +39,13 @@ int main(int argc, const char * argv[]) {
         }
 
         cout << "Queue: " << endl;
-        for (int i = 0; i < parking.size(); i++) {
-            cout << setw(WIDTH);
-            parking[i].print();
+        if (parking.empty()) {
+            cout << setw(10) << "Empty" << endl;
+        } else {
+            for (int i = 0; i < parking.size(); i++) {
+                cout << setw(WIDTH);
+                parking[i].print();
+            }
         }
         time++;
     }
