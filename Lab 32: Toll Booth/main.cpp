@@ -6,6 +6,7 @@
 //
 #include "Car.h"
 #include <iostream>
+#include <cstdlib>
 #include <ctime>
 
 #include <deque>
@@ -14,29 +15,36 @@ const int INIT = 2, WIDTH = 6;
 int main(int argc, const char * argv[]) {
     srand(time(0));
     deque<Car> parking;
-    bool again = true;
     for (int i = 0; i < INIT; i++){
         parking.push_back(Car());
     }
-    cout << "Initial Que: " << endl;
+    cout << "Initial Queue: " << endl;
     cout << setw(WIDTH);
     parking.front().print();
     cout << setw(WIDTH);
     parking.back().print();
     
     int time = 1;
-    while (again) {
-        cout << "Time: " << time << " Operation: ";
+    while (!parking.empty()) {
+        cout << "\nTime: " << time << " Operation: ";
         int chance = rand() % 100 + 1;
         if (chance <= 45) {
+            cout << "Joined lane: ";
             parking.push_back(Car());
+            parking.back().print();
         } else {
+            cout << "Car paid: ";
+            parking.front().print();
             parking.pop_front();
         }
+
+        cout << "Queue: " << endl;
         for (int i = 0; i < parking.size(); i++) {
+            cout << setw(WIDTH);
             parking[i].print();
         }
+        time++;
     }
-    
+
     return 0;
 }
