@@ -57,9 +57,12 @@ int main(int argc, const char * argv[]) {
                     lanes[i].back().print();
                     int newLane = rand() % LANES;
                     while (newLane == i) { //possibility that if newLane is the same lane that the car chosen is from
-                        int newLane = rand() % LANES;
+                        newLane = rand() % LANES;
                     }
                     
+                    Car temp = lanes[i].back();
+                    lanes[i].pop_back();
+                    lanes[newLane].push_back(temp);
                 }
             }
         }
