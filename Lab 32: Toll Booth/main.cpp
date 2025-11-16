@@ -9,21 +9,17 @@
 #include <cstdlib>
 #include <ctime>
 #include <deque>
-const int LANES = 4, WIDTH = 6;
+const int LANES = 4, RUNS = 20, WIDTH = 6;
 
 int main(int argc, const char * argv[]) {
     srand(time(0));
     deque<Car> lanes[LANES];
     
-    lanes[0].push_back(Car());
-    lanes[1].push_back(Car());
-    lanes[2].push_back(Car());
-    lanes[3].push_back(Car());
-    
-    for (int i = 0; i < LANES; i++){
+    for (int i = 0; i < LANES; i++) {
         lanes[i].push_back(Car());
         lanes[i].push_back(Car());
     }
+    
     cout << "Initial Queue: " << endl;
     for (int i = 0;  i < LANES; i++) {
         cout << "Lane " << i + 1 << endl;
@@ -33,10 +29,8 @@ int main(int argc, const char * argv[]) {
         lanes[i].back().print();
     }
     
-    int time = 1;
-    bool again = false;
-    while (!again) {
-        cout << "\nTime: " << time << endl;
+    for (int time = 0; time < RUNS; time++) {
+        cout << "\nTime: " << time + 1 << endl;
         for (int i = 0; i < LANES; i++) {
             cout << "Lane " << i + 1 << ": ";
             int chance = rand() % 100 + 1;
@@ -63,7 +57,7 @@ int main(int argc, const char * argv[]) {
         for (int i = 0; i < LANES; i++) {
             cout << "Lane " << i + 1 << " Queue: " << endl;
             if (lanes[i].empty()) {
-                cout << "Empty" << endl;
+                cout << setw(10) << "Empty" << endl;
             } else {
                 for (auto &c : lanes[i]){
                     cout << setw(WIDTH);
@@ -71,15 +65,6 @@ int main(int argc, const char * argv[]) {
                 }
             }
         }
-        
-        again = true;
-        for (int i = 0; i < LANES; i++) {
-            if (!lanes[i].empty()) {
-                again = false;
-                break;
-            }
-        }
-        time++;
     }
 
     return 0;
