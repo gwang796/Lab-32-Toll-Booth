@@ -1,30 +1,33 @@
 //
 //  main.cpp
-//  Lab 32: Toll Booth
-//
+//  COMSC- 210 | Lab 32: Toll Booth | Guo An Wang
+//  IDE: Xcode
 //  Created by Guo An Wang on 11/14/25.
 //
 #include "Car.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-
 #include <deque>
-const int INIT = 2, WIDTH = 6;
+const int LANES = 4, WIDTH = 6;
 
 int main(int argc, const char * argv[]) {
     srand(time(0));
-    deque<Car> parking;
-    for (int i = 0; i < INIT; i++){
-        parking.push_back(Car());
+    deque<Car> parking[LANES];
+    for (int i = 0; i < LANES; i++){
+        parking[i].push_back(Car());
+        parking[i].push_back(Car());
     }
     cout << "Initial Queue: " << endl;
-    cout << setw(WIDTH);
-    parking.front().print();
-    cout << setw(WIDTH);
-    parking.back().print();
+    for (int i = 0;  i < LANES; i++) {
+        cout << "Lane " << i + 1 << endl;
+        cout << setw(WIDTH);
+        parking[i].front().print();
+        cout << setw(WIDTH);
+        parking[i].back().print();
+    }
     
-    int time = 1;
+    /*int time = 1;
     while (!parking.empty()) {
         cout << "\nTime: " << time << " Operation: ";
         int chance = rand() % 100 + 1;
@@ -48,7 +51,9 @@ int main(int argc, const char * argv[]) {
             }
         }
         time++;
-    }
+    }*/
+    
+    
 
     return 0;
 }
