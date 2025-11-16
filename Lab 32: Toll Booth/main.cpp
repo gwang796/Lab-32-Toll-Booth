@@ -13,18 +13,19 @@ const int LANES = 4, WIDTH = 6;
 
 int main(int argc, const char * argv[]) {
     srand(time(0));
-    deque<Car> parking[LANES];
+    deque<Car> lanes[LANES];
+    
     for (int i = 0; i < LANES; i++){
-        parking[i].push_back(Car());
-        parking[i].push_back(Car());
+        lanes[i].push_back(Car());
+        lanes[i].push_back(Car());
     }
     cout << "Initial Queue: " << endl;
     for (int i = 0;  i < LANES; i++) {
         cout << "Lane " << i + 1 << endl;
         cout << setw(WIDTH);
-        parking[i].front().print();
+        lanes[i].front().print();
         cout << setw(WIDTH);
-        parking[i].back().print();
+        lanes[i].back().print();
     }
     
     /*int time = 1;
