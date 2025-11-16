@@ -33,31 +33,30 @@ int main(int argc, const char * argv[]) {
         lanes[i].back().print();
     }
     
-    /*int time = 1;
-    while (!parking.empty()) {
+    int time = 1;
+    bool again = false;
+    while (!again) {
         cout << "\nTime: " << time << " Operation: ";
-        int chance = rand() % 100 + 1;
-        if (chance <= 45) {
-            cout << "Joined lane: ";
-            parking.push_back(Car());
-            parking.back().print();
-        } else {
-            cout << "Car paid: ";
-            parking.front().print();
-            parking.pop_front();
-        }
-
-        cout << "Queue: " << endl;
-        if (parking.empty()) {
-            cout << setw(10) << "Empty" << endl;
-        } else {
-            for (int i = 0; i < parking.size(); i++) {
-                cout << setw(WIDTH);
-                parking[i].print();
+        for (int i = 0; i < LANES; i++) {
+            cout << "Lane " << i + 1 << ": ";
+            int chance = rand() % 100 + 1;
+            if (chance <= 50) {
+                cout << "Joined lane: ";
+                lanes[i].push_back(Car());
+                lanes[i].back().print();
+            } else {
+                cout << "Car paid: ";
+                lanes[i].front().print();
+                lanes[i].pop_front();
             }
         }
+        for (int i = 0; i < LANES; i++) {
+            cout << "Lane " << i + 1 << "Queue: " << endl;
+            for
+        }
+        
         time++;
-    }*/
+    }
     
     
 
