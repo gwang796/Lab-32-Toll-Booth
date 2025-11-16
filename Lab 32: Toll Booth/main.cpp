@@ -54,6 +54,7 @@ int main(int argc, const char * argv[]) {
                 }
             }
         }
+        
         for (int i = 0; i < LANES; i++) {
             cout << "Lane " << i + 1 << " Queue: " << endl;
             if (lanes[i].empty()) {
