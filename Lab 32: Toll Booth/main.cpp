@@ -10,6 +10,7 @@
 #include <ctime>
 #include <deque>
 const int LANES = 4, RUNS = 20, WIDTH = 6;
+const int JOIN = 39, PAY = 85, SWITCH = 100;
 
 int main(int argc, const char * argv[]) {
     srand(time(0));
@@ -35,22 +36,30 @@ int main(int argc, const char * argv[]) {
             cout << "Lane " << i + 1 << ": ";
             int chance = rand() % 100 + 1;
             if (lanes[i].empty()) {
-                if (chance <= 50) {
-                    cout << "Joined lane: ";
+                if (chance <= JOIN) {
+                    cout << "Joined: ";
                     lanes[i].push_back(Car());
                     lanes[i].back().print();
                 } else {
                     cout << "No Action" << endl;
                 }
             } else {
-                if (chance <= 50) {
-                    cout << "Joined lane: ";
+                if (chance <= JOIN) {
+                    cout << "Joined: ";
                     lanes[i].push_back(Car());
                     lanes[i].back().print();
-                } else {
-                    cout << "Car paid: ";
+                } else if (chance <= PAY) {
+                    cout << "Paid: ";
                     lanes[i].front().print();
                     lanes[i].pop_front();
+                } else {
+                    cout << "Switched: ";
+                    lanes[i].back().print();
+                    int newLane = rand() % LANES;
+                    while (newLane == i) { //possibility that if newLane is the same lane that the car chosen is from
+                        int newLane = rand() % LANES;
+                    }
+                    
                 }
             }
         }
