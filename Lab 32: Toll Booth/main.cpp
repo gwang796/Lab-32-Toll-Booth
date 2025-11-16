@@ -15,7 +15,34 @@ int main(int argc, const char * argv[]) {
     srand(time(0));
     deque<Car> lanes[LANES];
     
-    for (int i = 0; i < LANES; i++){
+    lanes[0].push_back(Car());
+    lanes[1].push_back(Car());
+    lanes[2].push_back(Car());
+    lanes[3].push_back(Car());
+    
+    cout << "Testing operations" << endl;
+    for (int i = 0; i < LANES; i++) {
+        cout << "Lane: " << i + 1 << endl;
+        cout << "Front: ";
+        lanes[i].front().print();
+        
+        cout << "Back: ";
+        lanes[i].back().print();
+    }
+    
+    lanes[0].pop_front();
+    
+    for (int i = 0; i < LANES; i++) {
+        cout << "Lane: " << i + 1 << endl;
+        if (lanes[i].empty()) {
+            cout << " Empty" << endl;
+        } else {
+            lanes[i].front().print();
+        }
+    }
+    
+    
+    /*for (int i = 0; i < LANES; i++){
         lanes[i].push_back(Car());
         lanes[i].push_back(Car());
     }
@@ -26,7 +53,7 @@ int main(int argc, const char * argv[]) {
         lanes[i].front().print();
         cout << setw(WIDTH);
         lanes[i].back().print();
-    }
+    }*/
     
     /*int time = 1;
     while (!parking.empty()) {
