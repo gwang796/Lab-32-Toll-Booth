@@ -36,29 +36,51 @@ int main(int argc, const char * argv[]) {
     int time = 1;
     bool again = false;
     while (!again) {
-        cout << "\nTime: " << time << " Operation: ";
+        cout << "\nTime: " << time << endl;
         for (int i = 0; i < LANES; i++) {
             cout << "Lane " << i + 1 << ": ";
             int chance = rand() % 100 + 1;
-            if (chance <= 50) {
-                cout << "Joined lane: ";
-                lanes[i].push_back(Car());
-                lanes[i].back().print();
+            if (lanes[i].empty()) {
+                if (chance <= 50) {
+                    cout << "Joined lane: ";
+                    lanes[i].push_back(Car());
+                    lanes[i].back().print();
+                } else {
+                    cout << "No Action" << endl;
+                }
             } else {
-                cout << "Car paid: ";
-                lanes[i].front().print();
-                lanes[i].pop_front();
+                if (chance <= 50) {
+                    cout << "Joined lane: ";
+                    lanes[i].push_back(Car());
+                    lanes[i].back().print();
+                } else {
+                    cout << "Car paid: ";
+                    lanes[i].front().print();
+                    lanes[i].pop_front();
+                }
             }
         }
         for (int i = 0; i < LANES; i++) {
-            cout << "Lane " << i + 1 << "Queue: " << endl;
-            for
+            cout << "Lane " << i + 1 << " Queue: " << endl;
+            if (lanes[i].empty()) {
+                cout << "Empty" << endl;
+            } else {
+                for (auto &c : lanes[i]){
+                    cout << setw(WIDTH);
+                    c.print();
+                }
+            }
         }
         
+        again = true;
+        for (int i = 0; i < LANES; i++) {
+            if (!lanes[i].empty()) {
+                again = false;
+                break;
+            }
+        }
         time++;
     }
-    
-    
 
     return 0;
 }
